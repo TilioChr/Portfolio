@@ -1,0 +1,565 @@
+* {
+    margin: 0;
+    /* Reset CSS */
+    padding: 0;
+    /*certain navigateur mettent du padding/margin sur certain éléments, hors cela me pose probleme alors je les enleves*/
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+:root {
+    --darkbluetwitter: #15202b;
+    --typegrey: rgb(139, 152, 165);
+    --colorborder: #34424d;
+    --whitetwitter: rgb(239, 243, 244);
+    --clearbluetwitter: rgb(28, 147, 229);
+    --like: rgb(249, 24, 129);
+    --likebg: rgba(249, 24, 129, 0.2);
+    --rt: rgb(0, 186, 124);
+    --rtbg: rgba(0, 186, 124, 0.2);
+    --defaultbg: rgba(28, 149, 229, 0.2);
+    --itembg: rgba(37, 46, 56, 255);
+}
+
+::placeholder {
+    color: var(--typegrey);
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--typegrey);
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--typegrey);
+}
+
+/* --------------------------------- */
+
+.loadingscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkbluetwitter);
+    z-index: 1000;
+    fill: var(--clearbluetwitter);
+}
+
+.loadingscreen svg {
+    width: 40px;
+    height: 40px;
+    padding-bottom: 20px;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 50%;
+    border: 3px solid var(--clearbluetwitter);
+    border-color: var(--clearbluetwitter) rgba(28, 149, 229, 0.249) rgba(28, 149, 229, 0.249) rgba(28, 149, 229, 0.249);
+    animation: lds-dual-ring 1s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --------------------------------- */
+
+.editoption svg,
+.editoption span,
+.menu svg,
+.postoptionelement svg {
+    cursor: pointer;
+}
+
+.stickytitle span,
+.trends,
+article {
+    cursor: default;
+}
+
+.menu svg:active,
+.editoption svg:active,
+.editoption span:active,
+.trendsfooter:active {
+    animation: wiggle .2s;
+}
+
+/* --------------------------------- */
+
+body {
+    background-color: var(--darkbluetwitter);
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* -------------------------------------------------------- */
+
+.colonnes {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu {
+    width: 15%;
+    position: fixed;
+    height: 100%;
+}
+
+.icon {
+    margin-top: 5px;
+}
+
+.feather {
+    margin-top: 5px;
+}
+
+.menu svg {
+    fill: var(--whitetwitter);
+    border-radius: 100%;
+    height: 30px;
+    /* margin-bottom: 20px; */
+    margin-left: 65%;
+    padding: 10px;
+    transition: background .1s ease;
+}
+
+.ppuser {
+    position: fixed;
+    bottom: 30px;
+    left: 9.3%;
+    width: 40px;
+    border-radius: 100%;
+    padding: 10px;
+    transition: background .1s ease;
+}
+
+.ppuser:hover {
+    background-color: rgba(255, 255, 255, 0.096);
+}
+
+.menu svg:hover {
+    background-color: rgba(255, 255, 255, 0.096);
+}
+
+.feather svg {
+    background-color: var(--clearbluetwitter);
+    padding: 13px;
+    border-radius: 100%;
+    height: 28px;
+    width: 28px;
+    margin-left: 64%;
+}
+
+/* -------------------------------------------------------- */
+
+.feed {
+    width: 47%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 15%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colorborder);
+    border-bottom: none;
+    border-top: none;
+}
+
+.stickytitle {
+    z-index: 1000;
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 93.5%;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 19px;
+    background-color: #15202bda;
+    backdrop-filter: blur(5px);
+    font-size: larger;
+    font-weight: bold;
+}
+
+.stickytitle svg {
+    height: 20px;
+    width: 20px;
+    fill: var(--whitetwitter);
+}
+
+.newtweet {
+    display: flex;
+    height: 150px;
+    width: 90%;
+    padding-top: 5px;
+}
+
+
+.profilpicture img {
+    width: 50px;
+    border-radius: 100%;
+}
+
+
+.newtweetin {
+    height: 100px;
+    width: 100%;
+    margin-left: 15px;
+}
+
+.editzone {
+    display: flex;
+    height: 30px;
+    padding-bottom: 40px;
+    padding-top: 15px;
+}
+
+.editzone input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: white;
+}
+
+.editoption {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    fill: var(--clearbluetwitter);
+    padding-top: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colorborder);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.editoptionbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 50%;
+}
+
+.editoption svg {
+    height: 22px;
+    width: 22px;
+    padding: 10px;
+    border-radius: 100%;
+    transition: background .1s ease;
+}
+
+.tweeterbutton {
+    padding: 9px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: var(--clearbluetwitter);
+    border-radius: 9999px;
+    font-weight: bold;
+}
+
+/* -------------------------------------------------------- */
+
+article {
+    display: flex;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colorborder);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    transition: background .1s ease;
+}
+
+article:hover {
+    background-color: var(--itembg);
+}
+
+.content {
+    display: flex;
+    padding-top: 15px;
+    width: 100%;
+}
+
+.topic {
+    width: 100%;
+}
+
+.postprofilpicture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.postprofilpicture img {
+    height: 50px;
+    border-radius: 100%;
+}
+
+.postusername {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2px;
+}
+
+.postusername>p:hover {
+    text-decoration: underline;
+}
+
+.postusername svg,
+.postusernamethread svg {
+    height: 21px;
+    width: 21px;
+    fill: var(--whitetwitter);
+    margin-left: 2px;
+}
+
+.postuserid {
+    color: var(--typegrey);
+    padding-left: 2px;
+}
+
+.postcontent {
+    width: 100%;
+}
+
+.imgcontent {
+    width: 100%;
+    max-height: 400px;
+    object-fit:cover;
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colorborder);
+    border-radius: 10px;
+}
+
+.hashtag {
+    color: var(--clearbluetwitter);
+}
+
+.hashtag:hover {
+    text-decoration: underline;
+}
+
+.postoption {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 425px;
+    margin-right: 15%;
+    margin-top: 5px;
+}
+
+.postoption svg {
+    border-radius: 100%;
+    padding: 10px;
+    height: 22px;
+    width: 22px;
+    fill: var(--typegrey);
+    background-color: rgba(249, 24, 129, 0);
+    transition: background .1s ease;
+}
+
+.liker:hover {
+    fill: var(--like);
+    background-color: var(--likebg);
+}
+
+.retweeter:hover {
+    fill: var(--rt);
+    background-color: var(--rtbg);
+}
+
+.default:hover {
+    fill: var(--clearbluetwitter);
+    background-color: var(--defaultbg);
+}
+
+.postoptionelement {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.amount {
+    margin-left: 5px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: var(--clearbluetwitter);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--colorborder);
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+}
+
+
+/* -------------------------------------------------------- */
+
+.tendances {
+    width: 30%;
+}
+
+.stickysearch {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #15202bda;
+    backdrop-filter: blur(5px);
+    font-size: larger;
+    font-weight: bold;
+}
+
+.searchbar {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    background-color: rgba(39, 51, 64, 255);
+    padding: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 9999px;
+    margin-left: 30px;
+    fill: var(--typegrey);
+}
+
+.searchbar input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    margin-left: 20px;
+    color: white;
+}
+
+.trends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    background-color: #1e2732;
+    margin-left: 30px;
+    border-radius: 20px;
+    margin-top: 15px;
+}
+
+.trendscontent {
+    width: 100%;
+    height: 95%;
+}
+
+.trendstitle {
+    font-size: larger;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.trendselement {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    transition: background .1s ease;
+}
+
+.trendselement:hover {
+    background-color: var(--itembg);
+}
+
+.trendstopic {
+    font-weight: bold;
+}
+
+.trendsoption {
+    font-size: small;
+    color: var(--typegrey);
+}
+
+.trendsfooter {
+    display: flex;
+    margin-left: 15px;
+    color: var(--clearbluetwitter);
+    padding-bottom: 20px;
+}
+
+/* -------------------------------------------------------- */
+
+@keyframes wiggle {
+    0% {
+        transform: translate(-3px);
+    }
+
+    25% {
+        transform: translate(3px);
+    }
+
+    50% {
+        transform: translate(-3px);
+    }
+
+    75% {
+        transform: translate(3px);
+    }
+
+    100% {
+        transform: translate(-3px);
+    }
+}

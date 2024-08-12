@@ -1,0 +1,65 @@
+.backarrow {
+    margin-right: 20px;
+    padding: 8px;
+    transition: background .1s ease;
+    border-radius: 100%;
+    margin-top: 5px;
+}
+
+.backarrow:hover{
+    background-color: rgba(255, 255, 255, 0.096);
+}
+
+.threadsticky {
+    display: flex;
+    align-items: center;
+}
+
+.articletopthread {
+    border-top: none;
+}
+
+.articletopthread:hover {
+    background-color: #15202b;
+}
+
+.postuseridthread {
+    padding-left: 0px;
+}
+
+.postusernamethread {
+    display: flex;
+    flex-direction: column;
+}
+
+.postusernamethread p {
+    display: flex;
+    align-items: center;
+}
+
+.postcontentthread {
+    font-size: larger;
+    margin-top: 10px;
+}
+
+.posttopthread {
+    display: flex;
+}
+
+.contentthread {
+    display: flex;
+    flex-direction: column;
+}
+
+.timepost, .replyname {
+    color: var(--typegrey);
+    font-size: smaller;
+}
+
+.line {
+    z-index: 5;
+    height: 100%;
+    width: 2px;
+    background-color: #425364;
+    margin-top: 5px;
+}
